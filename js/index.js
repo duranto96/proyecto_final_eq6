@@ -12,15 +12,3 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
-
-// Al cargar la página
-window.onload = function() {
-    // Verifica si el usuario está autenticado
-    if (localStorage.getItem("autenticado") === "true") {
-        // Si está autenticado, no hacemos nada (o podrías redirigir a la página principal)
-        console.log("Usuario autenticado");
-    } else {
-        // Si no está autenticado, redirigir a la página de login
-        window.location.href = 'login.html';
-    }
-}

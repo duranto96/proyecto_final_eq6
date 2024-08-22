@@ -12,8 +12,6 @@ document.getElementById("btnIngresar").addEventListener("click", function(){
     }
 
     if (name!="" & password!=""){
-        localStorage.setItem('autenticado', 'true');
-        localStorage.setItem('username', name);
         window.location="index.html"
     }
 
