@@ -11,4 +11,17 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
 });
+
+window.onload = function() {
+    // Verifica si el usuario está autenticado
+    if (localStorage.getItem("autenticado") === "true") {
+        // Si está autenticado, no hacemos nada (o podrías redirigir a la página principal)
+        console.log("Usuario autenticado");
+    } else {
+        // Si no está autenticado, redirigir a la página de login
+        window.location.href = 'login.html';
+    }
+}
+
