@@ -15,9 +15,9 @@ function showProductsList(productsArray) {
     htmlLista += ` 
  <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex align-items-start justify-content-around">
+    <div class="d-flex align-items-start justify-content-between">
       <img src="${p.image}" style="height: 85px;" class="me-3"> 
-      <div>
+      <div class="w-100">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${p.name}</h5>
           <small class="text-end">${p.soldCount} vendidos</small>
@@ -28,6 +28,7 @@ function showProductsList(productsArray) {
     </div>
   </a>  
 </div>
+
 `;
   }
   document.getElementById("lproduct").innerHTML = htmlLista;
