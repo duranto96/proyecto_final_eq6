@@ -16,7 +16,7 @@ function showProductsList(productsArray) {
  <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex align-items-start justify-content-between">
-      <img src="${p.image}" style="height: 85px;" class="me-3"> 
+      <img src="${p.image}" style="height: 5rem;" class="me-3"> 
       <div class="w-100">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${p.name}</h5>

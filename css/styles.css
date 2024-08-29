@@ -2,7 +2,7 @@
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
+  font-family: "Verdana", serif !important;
 }
 
 .jumbotron .display-4 {
@@ -32,8 +32,8 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #53c0fb;
+  background: url("../img/cover_back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,12 +73,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
@@ -86,7 +86,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #0087f7;
   border-radius: 5px;
   background: white;
 }
@@ -189,21 +189,97 @@ a.custom-card:hover {
   color: orange;
 }
 
+/* Estilo general para la lista de productos */
+#lproduct {
+  padding-bottom: 2rem; /* Espacio inferior */
+}
+
+/* Estilo para pantallas estándar (1366 x 768 px) */
+@media (min-width: 1366px) {
+  .list-group-item {
+    flex-direction: row;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  img {
+    height: 100px; /* Aumentar tamaño de imagen */
+  }
+}
+
+/* Estilo para tabletas en modo vertical (768 x 1024 px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .list-group-item {
+    flex-direction: column; /* Cambiar a columna */
+    align-items: flex-start; /* Alinear a la izquierda */
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  img {
+    height: 80px; /* Ajustar tamaño de imagen */
+  }
+  h5 {
+    font-size: 1.2rem; /* Ajustar tamaño de fuente */
+  }
+}
+
+/* Estilos generales */
+.product-item {
+  display: flex; /* Disposición por defecto para pantallas grandes */
+  align-items: center; /* Alinear verticalmente */
+}
+
+/* Estilo para pantallas de 320 x 568 px o menos */
+@media (max-width: 320px) {
+  .list-group-item {
+    display: block; /* Cambiar a bloque para que ocupe todo el ancho */
+    text-align: center; /* Centrar el texto */
+  }
+
+  .d-flex {
+    flex-direction: column; /* Cambiar la dirección de los elementos a columna */
+    align-items: center; /* Alinear elementos al centro */
+  }
+
+  img {
+    height: 10rem !important; /* Mantener el tamaño de la imagen */
+    margin-bottom: 0.5rem; /* Espacio entre imagen y título */
+    display: block; /* Asegurarse de que la imagen sea un bloque */
+    margin-left: auto; /* Centrar imagen */
+    margin-right: auto; /* Centrar imagen */
+  }
+
+  h5.mb-1 {
+    margin-bottom: 0.25rem; /* Espacio entre título y descripción */
+  }
+
+  p.mb-1 {
+    margin-bottom: 0.25rem; /* Espacio entre descripción y precio */
+  }
+
+  /* Asegurarse que el precio esté bien alineado */
+  h5 {
+    margin-top: 0.5rem; /* Espacio encima del precio */
+  }
+
+  .me-3 {
+    margin-right: auto !important;
+  }
+}
 
 @media (max-width: 320px) {
   footer.text-muted {
-    text-align: center; 
+    text-align: center;
   }
 
   footer.text-muted .container {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   footer.text-muted .float-end {
-    float: none; 
-    margin-bottom: 1rem; 
+    float: none;
+    margin-bottom: 1rem;
   }
 }
