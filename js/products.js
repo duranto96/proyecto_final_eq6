@@ -40,3 +40,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     "https://japceibal.github.io/emercado-api/cats_products/101.json"
   );
 });
+
+window.onload = function() {
+  if (localStorage.getItem("autenticado") === "true") {
+      let userName = localStorage.getItem('username');
+      if (userName) {
+          document.getElementById("user-email").textContent = userName;
+      }
+  }
+}
