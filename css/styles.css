@@ -265,22 +265,3 @@ a.custom-card:hover {
     margin-right: auto !important;
   }
 }
-
-/* Estilo para pantallas de 320 x 568 px o menos */
-@media (max-width: 320px) {
-  footer.text-muted {
-    text-align: center; /* Centrar el texto */
-  }
-
-  footer.text-muted .container {
-    display: flex; /* Usar flexbox para centrar el contenido */
-    flex-direction: column; /* Colocar los elementos en columna */
-    align-items: center; /* Alinear elementos al centro */
-    justify-content: center; /* Justificar contenido al centro */
-  }
-
-  footer.text-muted .float-end {
-    float: none; /* Eliminar el flotado */
-    margin-bottom: 1rem; /* Espacio debajo del enlace "Volver arriba" */
-  }
-}
