@@ -265,3 +265,21 @@ a.custom-card:hover {
     margin-right: auto !important;
   }
 }
+
+@media (max-width: 320px) {
+  footer.text-muted {
+    text-align: center;
+  }
+
+  footer.text-muted .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer.text-muted .float-end {
+    float: none;
+    margin-bottom: 1rem;
+  }
+}

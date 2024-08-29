@@ -13,9 +13,8 @@
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      
-      <div class="login-container">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="login-container card p-4 w-100" style="max-width: 400px;">
         <h4 class="text-center">Iniciar sesión</h4>
         <form id="loginForm">
           <div class="mb-3">
@@ -26,14 +25,14 @@
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
           </div>
-          <input id="btnIngresar" value="Ingresar" type="button" class="btn btn-primary">
-          <p id="errorMsg" class="error text-danger" style="display:none;">Por favor, completa todos los campos.</p>
+          <input id="btnIngresar" value="Ingresar" type="button" class="btn btn-primary w-100">
+          <p id="errorMsg" class="error text-danger text-center" style="display:none;">Por favor, completa todos los campos.</p>
         </form>
       </div>
     </div>
   </main>
 
-  <footer class="text-muted">
+  <footer class="text-muted mt-5">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>

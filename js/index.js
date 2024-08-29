@@ -17,8 +17,10 @@ document.addEventListener("DOMContentLoaded", function(){
 window.onload = function() {
     // Verifica si el usuario está autenticado
     if (localStorage.getItem("autenticado") === "true") {
-        // Si está autenticado, no hacemos nada (o podrías redirigir a la página principal)
-        console.log("Usuario autenticado");
+        let userName = localStorage.getItem('username');
+        if (userName) {
+            document.getElementById("user-email").textContent = userName;
+        }
     } else {
         // Si no está autenticado, redirigir a la página de login
         window.location.href = 'login.html';
