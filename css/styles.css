@@ -222,22 +222,65 @@ a.custom-card:hover {
   }
 }
 
-/* Estilo para smartphones pequeños (320 x 568 px) */
+/* Estilos generales */
+.product-item {
+  display: flex; /* Disposición por defecto para pantallas grandes */
+  align-items: center; /* Alinear verticalmente */
+}
+
+/* Estilo para pantallas de 320 x 568 px o menos */
 @media (max-width: 320px) {
   .list-group-item {
-    padding: 0.5rem; /* Reducir espacio */
-    margin-bottom: 0.5rem; /* Reducir margen */
+    display: block; /* Cambiar a bloque para que ocupe todo el ancho */
+    text-align: center; /* Centrar el texto */
   }
+
+  .d-flex {
+    flex-direction: column; /* Cambiar la dirección de los elementos a columna */
+    align-items: center; /* Alinear elementos al centro */
+  }
+
   img {
-    height: 60px; /* Reducir tamaño de imagen */
+    height: 10rem !important; /* Mantener el tamaño de la imagen */
+    margin-bottom: 0.5rem; /* Espacio entre imagen y título */
+    display: block; /* Asegurarse de que la imagen sea un bloque */
+    margin-left: auto; /* Centrar imagen */
+    margin-right: auto; /* Centrar imagen */
   }
+
+  h5.mb-1 {
+    margin-bottom: 0.25rem; /* Espacio entre título y descripción */
+  }
+
+  p.mb-1 {
+    margin-bottom: 0.25rem; /* Espacio entre descripción y precio */
+  }
+
+  /* Asegurarse que el precio esté bien alineado */
   h5 {
-    font-size: 1rem; /* Ajustar tamaño de fuente */
+    margin-top: 0.5rem; /* Espacio encima del precio */
   }
-  p {
-    font-size: 0.8rem; /* Ajustar tamaño de texto */
+
+  .me-3 {
+    margin-right: auto !important;
   }
-  small {
-    font-size: 0.6rem; /* Ajustar tamaño de texto */
+}
+
+/* Estilo para pantallas de 320 x 568 px o menos */
+@media (max-width: 320px) {
+  footer.text-muted {
+    text-align: center; /* Centrar el texto */
+  }
+
+  footer.text-muted .container {
+    display: flex; /* Usar flexbox para centrar el contenido */
+    flex-direction: column; /* Colocar los elementos en columna */
+    align-items: center; /* Alinear elementos al centro */
+    justify-content: center; /* Justificar contenido al centro */
+  }
+
+  footer.text-muted .float-end {
+    float: none; /* Eliminar el flotado */
+    margin-bottom: 1rem; /* Espacio debajo del enlace "Volver arriba" */
   }
 }
