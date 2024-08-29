@@ -2,7 +2,7 @@
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
+  font-family: "Verdana", serif !important;
 }
 
 .jumbotron .display-4 {
@@ -32,8 +32,8 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #53c0fb;
+  background: url("../img/cover_back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,12 +73,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
@@ -86,7 +86,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #0087f7;
   border-radius: 5px;
   background: white;
 }
@@ -187,4 +187,57 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+/* Estilo general para la lista de productos */
+#lproduct {
+  padding-bottom: 2rem; /* Espacio inferior */
+}
+
+/* Estilo para pantallas estándar (1366 x 768 px) */
+@media (min-width: 1366px) {
+  .list-group-item {
+    flex-direction: row;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  img {
+    height: 100px; /* Aumentar tamaño de imagen */
+  }
+}
+
+/* Estilo para tabletas en modo vertical (768 x 1024 px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .list-group-item {
+    flex-direction: column; /* Cambiar a columna */
+    align-items: flex-start; /* Alinear a la izquierda */
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  img {
+    height: 80px; /* Ajustar tamaño de imagen */
+  }
+  h5 {
+    font-size: 1.2rem; /* Ajustar tamaño de fuente */
+  }
+}
+
+/* Estilo para smartphones pequeños (320 x 568 px) */
+@media (max-width: 320px) {
+  .list-group-item {
+    padding: 0.5rem; /* Reducir espacio */
+    margin-bottom: 0.5rem; /* Reducir margen */
+  }
+  img {
+    height: 60px; /* Reducir tamaño de imagen */
+  }
+  h5 {
+    font-size: 1rem; /* Ajustar tamaño de fuente */
+  }
+  p {
+    font-size: 0.8rem; /* Ajustar tamaño de texto */
+  }
+  small {
+    font-size: 0.6rem; /* Ajustar tamaño de texto */
+  }
 }
