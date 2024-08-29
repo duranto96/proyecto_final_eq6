@@ -4,5 +4,7 @@ window.onload = function() {
         if (userName) {
             document.getElementById("user-email").textContent = userName;
         }
+        } else {
+            window.location.href = 'login.html';
+        }
     }
-}
