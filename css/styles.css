@@ -194,29 +194,13 @@ a.custom-card:hover {
   padding-bottom: 2rem; /* Espacio inferior */
 }
 
-/* Estilo para pantallas estándar (1366 x 768 px) */
-@media (min-width: 1366px) {
-  .list-group-item {
-    flex-direction: row;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  img {
-    height: 100px; /* Aumentar tamaño de imagen */
-  }
-}
-
 /* Estilo para tabletas en modo vertical (768 x 1024 px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .list-group-item {
     flex-direction: column; /* Cambiar a columna */
     align-items: flex-start; /* Alinear a la izquierda */
-    padding: 1rem;
-    margin-bottom: 1rem;
   }
-  img {
-    height: 80px; /* Ajustar tamaño de imagen */
-  }
+
   h5 {
     font-size: 1.2rem; /* Ajustar tamaño de fuente */
   }
