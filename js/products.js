@@ -1,13 +1,13 @@
-function getProducts(url) {
-  return fetch(url)
-    .then((respuesta) => {
-      console.log(respuesta);
-      return respuesta.json();
-    })
-    .then((resultadoObj) => {
-      showProductsList(resultadoObj.products);
-    });
-}
+let productsURL = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
+
+fetch(productsURL)
+  .then((respuesta) => {
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then((resultadoObj) => {
+    showProductsList(resultadoObj.products);
+  });
 
 function showProductsList(productsArray) {
   let htmlLista = "";
@@ -16,7 +16,7 @@ function showProductsList(productsArray) {
  <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex align-items-start justify-content-between">
-      <img src="${p.image}" style="height: 85px;" class="me-3"> 
+      <img src="${p.image}" style="height: 5rem;" class="me-3"> 
       <div class="w-100">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${p.name}</h5>
@@ -35,8 +35,11 @@ function showProductsList(productsArray) {
 }
 
 //Llamamos a la función dentro de un evento para que se ejecute después de que se haya cargado todo.
-document.addEventListener("DOMContentLoaded", function (e) {
-  getProducts(
-    "https://japceibal.github.io/emercado-api/cats_products/101.json"
-  );
+document.addEventListener("DOMContentLoaded", (e) => {
+  getJSONData(PRODUCTS_URL + 101 + EXT_TYPE).then((object) => {
+    if (object.status === "ok") {
+      let productsArray = object.data.products;
+      showProductsList(productsArray);
+    }
+  });
 });
