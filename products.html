@@ -48,7 +48,34 @@
         </div>
       </div>
     </nav>
-    <main id="lproduct" class="pb-5 container"></main>
+
+    <!-- Filtros y opciones de orden -->
+    <div class="container mt-3">
+      <div class="row">
+        <!-- Filtros por rango de precio -->
+        <div class="col-md-3">
+          <h5>Filtrar por precio:</h5>
+          <label for="minPrice">Precio mínimo:</label>
+          <input type="number" id="minPrice" class="form-control mb-2" placeholder="Mínimo">
+          <label for="maxPrice">Precio máximo:</label>
+          <input type="number" id="maxPrice" class="form-control mb-3" placeholder="Máximo">
+          <button id="filterPrice" class="btn btn-primary">Filtrar</button>
+          <button id="clearFilters" class="btn btn-secondary">Limpiar</button>
+        </div>
+
+        <!-- Opciones de orden -->
+        <div class="col-md-9">
+          <h5>Ordenar por:</h5>
+          <button id="sortAsc" class="btn btn-outline-info mb-2">Precio Ascendente</button>
+          <button id="sortDesc" class="btn btn-outline-info mb-2">Precio Descendente</button>
+          <button id="sortByRelevance" class="btn btn-outline-info mb-2">Relevancia</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de productos -->
+    <main id="lproduct" class="pb-5 container mt-3"></main>
+
     <footer class="text-muted">
       <div class="container">
         <p class="float-end">
@@ -62,6 +89,7 @@
         </p>
       </div>
     </footer>
+
     <div id="spinner-wrapper">
       <div class="lds-ring">
         <div></div>
