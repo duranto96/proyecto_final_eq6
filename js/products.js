@@ -36,7 +36,7 @@ function showProductsList(productsArray) {
 
 //Llamamos a la función dentro de un evento para que se ejecute después de que se haya cargado todo.
 document.addEventListener("DOMContentLoaded", (e) => {
-  getJSONData(PRODUCTS_URL + 101 + EXT_TYPE).then((object) => {
+  getJSONData(PRODUCTS_URL + EXT_TYPE).then((object) => {
     if (object.status === "ok") {
       let productsArray = object.data.products;
       showProductsList(productsArray);
@@ -44,18 +44,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
   });
 });
 
-window.onload = function() {
+window.onload = function () {
   if (localStorage.getItem("autenticado") === "true") {
-      let userName = localStorage.getItem('username');
-      if (userName) {
-          document.getElementById("user-email").textContent = userName;
-      }else {
-        // Si no está autenticado, redirigir a la página de login
-        window.location.href = 'login.html';
+    let userName = localStorage.getItem("username");
+    if (userName) {
+      document.getElementById("user-email").textContent = userName;
+    } else {
+      // Si no está autenticado, redirigir a la página de login
+      window.location.href = "login.html";
     }
   } else {
-    window.location.href = 'login.html';
-}
+    window.location.href = "login.html";
+  }
 }
 
 // Variables globales
@@ -124,3 +124,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+;
