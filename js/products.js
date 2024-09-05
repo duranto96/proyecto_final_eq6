@@ -1,13 +1,13 @@
-function getProducts(url) {
-  return fetch(url)
-    .then((respuesta) => {
-      console.log(respuesta);
-      return respuesta.json();
-    })
-    .then((resultadoObj) => {
-      showProductsList(resultadoObj.products);
-    });
-}
+let productsURL = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
+
+fetch(productsURL)
+  .then((respuesta) => {
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then((resultadoObj) => {
+    showProductsList(resultadoObj.products);
+  });
 
 function showProductsList(productsArray) {
   let htmlLista = "";
@@ -35,10 +35,13 @@ function showProductsList(productsArray) {
 }
 
 //Llamamos a la función dentro de un evento para que se ejecute después de que se haya cargado todo.
-document.addEventListener("DOMContentLoaded", function (e) {
-  getProducts(
-    "https://japceibal.github.io/emercado-api/cats_products/101.json"
-  );
+document.addEventListener("DOMContentLoaded", (e) => {
+  getJSONData(PRODUCTS_URL + 101 + EXT_TYPE).then((object) => {
+    if (object.status === "ok") {
+      let productsArray = object.data.products;
+      showProductsList(productsArray);
+    }
+  });
 });
 
 window.onload = function() {
