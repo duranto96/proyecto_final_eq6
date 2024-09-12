@@ -39,3 +39,21 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+function mostrarUsuarioEnNavegacion() {
+  if (localStorage.getItem("autenticado") === "true") {
+    let userName = localStorage.getItem("username");
+    if (userName) {
+      document.getElementById("user-email").textContent = userName;
+    } else {
+      window.location.href = "login.html";
+    }
+  } else {
+    window.location.href = "login.html";
+  }
+}
+
+window.onload = function() {
+  mostrarUsuarioEnNavegacion();
+}

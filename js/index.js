@@ -14,16 +14,5 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-window.onload = function() {
-    // Verifica si el usuario está autenticado
-    if (localStorage.getItem("autenticado") === "true") {
-        let userName = localStorage.getItem('username');
-        if (userName) {
-            document.getElementById("user-email").textContent = userName;
-        }
-    } else {
-        // Si no está autenticado, redirigir a la página de login
-        window.location.href = 'login.html';
-    }
-}
+
 

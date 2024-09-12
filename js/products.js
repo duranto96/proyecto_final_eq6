@@ -44,19 +44,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   });
 });
 
-window.onload = function () {
-  if (localStorage.getItem("autenticado") === "true") {
-    let userName = localStorage.getItem("username");
-    if (userName) {
-      document.getElementById("user-email").textContent = userName;
-    } else {
-      // Si no está autenticado, redirigir a la página de login
-      window.location.href = "login.html";
-    }
-  } else {
-    window.location.href = "login.html";
-  }
-}
 
 // Variables globales
 let currentProductsArray = [];
