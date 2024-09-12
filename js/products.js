@@ -125,3 +125,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 ;
+
+document.getElementById("searchBar").addEventListener("input", function() {
+  let searchQuery = this.value.toLowerCase();
+
+  let filteredProducts = currentProductsArray.filter(product => {
+      let productName = product.name.toLowerCase();
+      let productDescription = product.description.toLowerCase();
+      return productName.includes(searchQuery) || productDescription.includes(searchQuery);
+  });
+
+  showProductsList(filteredProducts);
+});
+
