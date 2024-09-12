@@ -55,7 +55,7 @@
       <div class="row">
         <!-- Campo de búsqueda -->
         <div class="col-md-12">
-        <h5>Buscar productos:</h5>
+        <h5 class="mb-3">Buscar productos:</h5>
         <input type="search" id="searchBar" class="form-control mb-3" placeholder="Buscar productos...">
         </div>
       
@@ -81,14 +81,27 @@
         </div>
 
         <!-- Opciones de orden -->
-        <div class="col-md-9">
-          <h5>Ordenar por:</h5>
-          <button id="sortAsc" class="btn btn-outline-info mb-2">Precio Ascendente</button>
-          <button id="sortDesc" class="btn btn-outline-info mb-2">Precio Descendente</button>
-          <button id="sortByRelevance" class="btn btn-outline-info mb-2">Relevancia</button>
+        <div class="col-md-12">
+          <h5 class="mb-3 mt-3">Ordenar por:</h5>
+          <div class="row">
+            <div class="col-md-4">
+              <button id="sortAsc" class="btn btn-outline-info w-100">
+              <i class="fas fa-sort-amount-up-alt"></i> <!-- Precio Ascendente -->
+              </button>
+            </div>
+        <div class="col-md-4">
+            <button id="sortDesc" class="btn btn-outline-info w-100">
+            <i class="fas fa-sort-amount-down-alt"></i> <!-- Precio Descendente -->
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button id="sortByRelevance" class="btn btn-outline-info w-100">
+            Relevancia
+            </button>
         </div>
       </div>
     </div>
+ 
 
      
     <!-- Lista de productos -->
