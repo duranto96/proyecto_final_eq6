@@ -1,6 +1,6 @@
-let productINFOURL = PRODUCT_INFO_URL + localStorage.getItem("id") + EXT_TYPE;
+let productINFOURL = PRODUCT_INFO_URL + localStorage.getItem("productId") + EXT_TYPE;
 
-fetch(productsINFOURL)
+fetch(productINFOURL)
     .then((respuesta) => {
         console.log(respuesta);
         return respuesta.json();
@@ -10,34 +10,11 @@ fetch(productsINFOURL)
     });
 
 
-/* 
-function showProduct(product) {
- let htmlProduct = ` 
-          
-         <div class="col-3">
-           <h6>${product.category}</h6>
-           <h7>${product.soldCount}</h7>
-           <h2>${product.name}</h2>
-           <p>${product.description}</p>
-           <p><strong>Precio:</strong> ${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
-           <button class="btn btn-primary">Agregar al carrito</button>
-         </div>`;
-
-         for (let img of product.images){
-           htmlProduct+=`<<div class="col-7">
-            <img src="${img}" alt="Imagen principal del producto">
-         </div>
-           `
-         }
-
-         document.getElementById("product").innerHTML = htmlProduct;
-}
-*/
-
 
 
 function showProduct(product) {
-    let htmlProduct += `<div id="imagenGrande" class="col-7">
+    let htmlProduct = " ";
+    htmlProduct +=  `<div id="imagenGrande" class="col-7">
                     <img src="${product.images[0]}" alt="Imagen principal del producto">
                   </div>`;
 
@@ -61,48 +38,7 @@ function showProduct(product) {
         document.getElementById("product").innerHTML = htmlProduct;
     }
 
-    /* 
-    function showProduct(product) {
-        let htmlProduct = '';
-      
-        // Images container
-        htmlProduct += '<div id="imagenes-chicas">';
-      
-        // Loop through secondary images
-        for (let i = 1; i < product.images.length; i++) {
-          let img = product.images[i].img;
-          htmlProduct += `<div class="col-2">
-                            <img src="${img}" alt="Imágenes secundarias del producto">
-                          </div>`;
-        }
-      
-        htmlProduct += '</div>'; // Close images container
-      
-        // Description container
-        htmlProduct += '<div id="descripcion">';
-      
-        // Primary image
-        htmlProduct += `<div class="col-7">
-                          <img src="${product.images[0]}" alt="Imagen principal del producto">
-                        </div>`;
-      
-        // Product details
-        htmlProduct += `<div class="col-3">
-                          <h6>${product.category}</h6>
-                          <h7>${product.soldCount}</h7>
-                          <h2>${product.name}</h2>
-                          <p>${product.description}</p>
-                          <p><strong>Precio:</strong> ${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
-                          <button class="btn btn-primary">Agregar al carrito</button>
-                        </div>`;
-      
-        htmlProduct += '</div>'; // Close description container
-      
-        document.getElementById("product").innerHTML = htmlProduct;
-      }
     
-     */
-
 
     function listenForListGroupClicks() {
         const listGroups = document.querySelectorAll('.list-group');
@@ -129,3 +65,4 @@ function showProduct(product) {
             }
         });
     });
+  } 
