@@ -25,9 +25,12 @@ function showTitle(cat) {
 function showProductsList(productsArray) {
   let htmlLista = "";
   for (let p of productsArray) {
-    htmlLista += `   
- <div class="list-group"> 
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+
+    htmlLista += ` 
+ <div class="list-group">
+  <a href="product-info.html" onclick="setProductID(${p.id})" class="list-group-item list-group-item-action flex-column align-items-start">
+
+   
     <div class="d-flex align-items-start justify-content-between">
       <img src="${p.image}" style="height: 5rem;" class="me-3"> 
       <div class="w-100">
@@ -111,6 +114,10 @@ document.getElementById("sortByRelevance").addEventListener("click", function() 
     let sortedProducts = sortProducts("relevance", currentProductsArray);
     showProductsList(sortedProducts);
 });
+
+function setProductID(id) {
+  localStorage.setItem("productId",id);
+}
 
 // Cargar productos al inicio
 document.addEventListener("DOMContentLoaded", function() {
