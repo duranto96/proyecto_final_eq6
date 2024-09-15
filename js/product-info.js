@@ -14,29 +14,37 @@ fetch(productINFOURL)
 
 function showProduct(product) {
     let htmlProduct = " ";
-    htmlProduct +=  `<div id="imagenGrande" class="col-7">
-                    <img src="${product.images[0]}" alt="Imagen principal del producto">
-                  </div>`;
+   
+    htmlProduct += `<div id="imagenes-chicas" class="col-2">`
 
     for (let i = 1; i < product.images.length; i++) {
-        const img = product.images[i].img;
-        htmlProduct += `<div id="imagenes-chicas"class=col-7">
-                    <img src="${img}" alt="Imagen principal del producto">
-                  </div>`;
+        const img = product.images[i];
+        htmlProduct += `
+        
+                    <img src="${img}" alt="Imágenes secundarias del producto">
+                  `;
+                }
+
+        htmlProduct += `</div>`
+    
+                htmlProduct +=  `<div id="imagenGrande" class="col-7">
+                <img src="${product.images[0]}" alt="Imagen principal del producto">
+              </div>`;
 
         htmlProduct += `<div id="info" class="col-3">
-                    <h6>${product.category}</h6>
-                    <h7>${product.soldCount}</h7>
+                    <h6> Categoría ${product.category}</h6>
+                    <h7> ${product.soldCount} Unidades vendidas</h7>
                     <h2>${product.name}</h2>
-                    <p>${product.description}</p>
                     <p><strong>Precio:</strong> ${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
                     <button class="btn btn-primary">Agregar al carrito</button>
                   </div>`;
 
-
+htmlProduct+= `<div id="Descripción" class="col-9">
+<p><strong>Descripción</strong></p>
+<p>${product.description}</p>`;
 
         document.getElementById("product").innerHTML = htmlProduct;
-    }
+    
 
     
 

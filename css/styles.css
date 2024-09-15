@@ -267,3 +267,26 @@ a.custom-card:hover {
     margin-bottom: 1rem;
   }
 }
+
+#imagenes-chicas {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  
+}
+
+#imagenes-chicas img {
+  width: 110%;
+  margin: 5px;
+  
+}
+
+#imagenGrande img {
+  width: 90%;
+  margin: 5px;
+  
+}
+
+#product {
+  margin-top: 1.5rem;
+}
