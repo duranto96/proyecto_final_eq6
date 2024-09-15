@@ -7,14 +7,30 @@ fetch(productsURL)
   })
   .then((resultadoObj) => {
     showProductsList(resultadoObj.products);
+    showTitle(resultadoObj.catName);
   });
+
+function showTitle(cat) {
+  let htmlTitle = "";
+  htmlTitle += ` <h1> Productos </h1> 
+       <p>Aquí verás todos los productos de la categoría ${cat}</p>
+  ` 
+                 
+
+  document.getElementById("title").innerHTML = htmlTitle;
+} 
+
+
 
 function showProductsList(productsArray) {
   let htmlLista = "";
   for (let p of productsArray) {
+
     htmlLista += ` 
  <div class="list-group">
   <a href="product-info.html" onclick="setProductID(${p.id})" class="list-group-item list-group-item-action flex-column align-items-start">
+
+   
     <div class="d-flex align-items-start justify-content-between">
       <img src="${p.image}" style="height: 5rem;" class="me-3"> 
       <div class="w-100">
@@ -116,3 +132,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 ;
+
+document.getElementById("searchBar").addEventListener("input", function() {
+  let searchQuery = this.value.toLowerCase();
+
+  let filteredProducts = currentProductsArray.filter(product => {
+      let productName = product.name.toLowerCase();
+      let productDescription = product.description.toLowerCase();
+      return productName.includes(searchQuery) || productDescription.includes(searchQuery);
+  });
+
+  showProductsList(filteredProducts);
+});
+
