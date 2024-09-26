@@ -62,15 +62,34 @@ htmlProduct+= `<div id="Descripción" class="col-9">
 
     // Llamamos a la función para que se ejecute al cargar la página
     document.addEventListener('DOMContentLoaded', listenForListGroupClicks);
-
-
-    //Llamamos a la función dentro de un evento para que se ejecute después de que se haya cargado todo.
-    document.addEventListener("DOMContentLoaded", (e) => {
-        getJSONData(productsINFOURL + EXT_TYPE).then((object) => {
-            if (object.status === "ok") {
-                let productArray = object.data.products;
-                showProduct(productArray);
-            }
-        });
-    });
   } 
+
+function showRelatedProducts(relatedProducts) {
+    let htmlRelated = '';
+
+    relatedProducts.forEach(product => {
+        htmlRelated += `
+            <div class="col-4">
+                <div class="card">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                        <a href="product-info.html?productId=${product.id}" class="btn btn-primary">Ver</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById("related-products").innerHTML = htmlRelated;
+}
+
+getJSONData(productINFOURL).then(function(result) {
+    if (result.status === "ok") {
+        let productData = result.data;
+        showProduct(productData);
+        showRelatedProducts(productData.relatedProducts);
+    } else {
+        console.error("Error al obtener los datos del producto");
+    }
+});
