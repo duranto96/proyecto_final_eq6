@@ -290,3 +290,14 @@ a.custom-card:hover {
 #product {
   margin-top: 1.5rem;
 }
+
+/* Estilos para las estrellas de calificación */
+.fa-star {
+  font-size: 1.5rem;
+  color: #ccc; /* Estrellas vacías */
+  cursor: pointer;
+}
+
+.fa-star.checked {
+  color: gold; /* Estrellas seleccionadas */
+}

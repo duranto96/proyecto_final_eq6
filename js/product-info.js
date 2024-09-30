@@ -43,7 +43,38 @@ htmlProduct+= `<div id="Descripción" class="col-9">
 <p><strong>Descripción</strong></p>
 <p>${product.description}</p>`;
 
+// En las próximas líneas de código se visualiza como  se inserta el HTML de las estrellitas. 
+            htmlProduct+= ` <div class="rating">
+            <span class="fa fa-star" data-value="1"></span>
+            <span class="fa fa-star" data-value="2"></span>
+            <span class="fa fa-star" data-value="3"></span>
+            <span class="fa fa-star" data-value="4"></span>
+            <span class="fa fa-star" data-value="5"></span>
+        </div>
+    `;
+
         document.getElementById("product").innerHTML = htmlProduct;
+        
+        const stars = document.getElementsByClassName("fa-star");
+         console.log(stars)
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].addEventListener('click', () => {
+                const value = parseInt(stars[i].getAttribute('data-value'));
+                console.log(value)
+                // Limpiar las estrellas previamente seleccionadas
+                for (let j = 0; j < stars.length; j++) {
+                    stars[j].classList.remove('checked');
+                }
+               
+                // Marcar las estrellas hasta la clicada
+                for (let j = 0; j < value; j++) {
+                    stars[j].classList.add('checked');
+                }
+                // Mostrar en la consola el valor seleccionado
+                console.log(`Valor seleccionado: ${value}`);
+            });
+        }
+    }
     
 
     
@@ -73,4 +104,4 @@ htmlProduct+= `<div id="Descripción" class="col-9">
             }
         });
     });
-  } 
+  
