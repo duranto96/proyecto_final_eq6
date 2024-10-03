@@ -54,9 +54,7 @@ function showComments(commentsArray) {
   for (let comment of commentsArray) {
     htmlComments += `
             <div class="comment">
-                <p><strong>${comment.user}</strong> - <span>${
-      comment.dateTime
-    }</span></p>
+                <p><strong>${comment.user}</strong> - <span>${comment.dateTime}</span></p>
                 <p>${comment.description}</p>
                 <div class="rating">
                     ${getStarsHTML(comment.score)}
@@ -82,10 +80,15 @@ function getStarsHTML(score) {
 
 // Obtener los comentarios usando getJSONData dentro del evento DOMContentLoaded
 document.addEventListener("DOMContentLoaded", (e) => {
+  // Cargar comentarios guardados desde localStorage
+  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+  showComments(savedComments); // Mostrar comentarios guardados
+
+  // Obtener comentarios de la API
   getJSONData(productCommentsURL).then((object) => {
     if (object.status === "ok") {
       let commentsArray = object.data;
-      showComments(commentsArray); // Mostrar los comentarios
+      showComments(commentsArray); // Mostrar comentarios de la API
     }
   });
 });
@@ -127,6 +130,11 @@ document.getElementById("rating-form").addEventListener("submit", (e) => {
         </div>
     </div>
   `;
+
+  // Guardar el nuevo comentario en localStorage
+  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+  savedComments.push(newComment);
+  localStorage.setItem("comments", JSON.stringify(savedComments));
 
   // Limpiar los campos del formulario
   document.getElementById("new-rating").value = "";
