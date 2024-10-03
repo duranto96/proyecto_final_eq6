@@ -287,6 +287,29 @@ a.custom-card:hover {
   
 }
 
+
+
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+  #imagenes-chicas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%; 
+  }
+
+  #imagenes-chicas img { /* Aplica los estilos directamente a las imágenes dentro del contenedor */
+    margin: 10px; /* Ajusta el margen a tu gusto */
+    width: 60%; /* Ajusta el ancho según el número de columnas que desees */
+    flex-basis: 50%; 
+    height: auto; /* Permite que la altura se ajuste automáticamente manteniendo la proporción */
+  }
+}
+
+
+
+
+
 #product {
   margin-top: 1.5rem;
 }
