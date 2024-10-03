@@ -301,3 +301,16 @@ a.custom-card:hover {
 .fa-star.checked {
   color: gold; /* Estrellas seleccionadas */
 }
+
+#rating-form {
+  background-color: #f8f9fa; /* Color de fondo del formulario */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.comment {
+  border: 1px solid #ced4da; /* Borde de los comentarios */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px;
+}
