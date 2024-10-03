@@ -80,10 +80,6 @@ function getStarsHTML(score) {
 
 // Obtener los comentarios usando getJSONData dentro del evento DOMContentLoaded
 document.addEventListener("DOMContentLoaded", (e) => {
-  // Cargar comentarios guardados desde localStorage
-  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
-  showComments(savedComments); // Mostrar comentarios guardados
-
   // Obtener comentarios de la API
   getJSONData(productCommentsURL).then((object) => {
     if (object.status === "ok") {
@@ -131,14 +127,10 @@ document.getElementById("rating-form").addEventListener("submit", (e) => {
     </div>
   `;
 
-  // Guardar el nuevo comentario en localStorage
-  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
-  savedComments.push(newComment);
-  localStorage.setItem("comments", JSON.stringify(savedComments));
-
   // Limpiar los campos del formulario
   document.getElementById("new-rating").value = "";
   document.getElementById("new-comment").value = "";
 });
+
 
 
