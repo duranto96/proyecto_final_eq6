@@ -3,14 +3,6 @@ let productINFOURL =
 let productCommentsURL =
   PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("productId") + EXT_TYPE;
 
-// Fetch para obtener la información del producto
-fetch(productINFOURL)
-  .then((respuesta) => {
-    return respuesta.json();
-  })
-  .then((resultadoObj) => {
-    showProduct(resultadoObj); // Mostrar el producto
-  });
 
 // Función para mostrar el producto
 function showProduct(product) {
