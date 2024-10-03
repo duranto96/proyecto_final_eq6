@@ -132,5 +132,38 @@ document.getElementById("rating-form").addEventListener("submit", (e) => {
   document.getElementById("new-comment").value = "";
 });
 
+function showRelatedProducts(relatedProducts) {
+    let htmlRelated = '';
 
+    relatedProducts.forEach(product => {
+        htmlRelated += `
+            <div class="col-4">
+                <div class="card">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                        <a href="#" class="btn btn-primary" onClick="mostrarRelacionado(${product.id})">Ver</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById("related-products").innerHTML = htmlRelated;
+}
+
+function mostrarRelacionado(id) {
+    localStorage.setItem("productId", id); 
+    window.location.href = "product-info.html"; 
+} 
+
+getJSONData(productINFOURL).then(function(result) {
+    if (result.status === "ok") {
+        let productData = result.data;
+        showProduct(productData);
+        showRelatedProducts(productData.relatedProducts);
+    } else {
+        console.error("Error al obtener los datos del producto");
+    }
+});
 
