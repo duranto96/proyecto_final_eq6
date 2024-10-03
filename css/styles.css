@@ -337,3 +337,51 @@ a.custom-card:hover {
   border-radius: 5px; /* Bordes redondeados */
   padding: 10px;
 }
+
+/* Estilo para el contenedor de productos relacionados */
+#related-products {
+  display: flex; /* Usar flexbox para los productos relacionados */
+  flex-wrap: wrap; /* Permite que los productos se ajusten a la siguiente fila */
+  margin: 0; /* Eliminar margen en el contenedor */
+  padding: 0; /* Eliminar padding en el contenedor */
+}
+
+/* Estilo para cada tarjeta de producto relacionado */
+.related-product-card {
+  flex: 1 1 calc(33.33% - 10px); /* Tomar un 33.33% del ancho */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Añadir sombra para profundidad */
+  border-radius: 5px; /* Bordes redondeados */
+  overflow: hidden; /* Ocultar desbordamiento */
+  margin: 5px; /* Margen de 5px entre las tarjetas para evitar el colapso visual */
+}
+
+/* Ajustes para imágenes dentro de tarjetas de productos */
+.related-product-card img {
+  width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .related-product-card {
+      flex: 1 1 calc(50% - 10px); /* Dos productos por fila en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
+  .related-product-card {
+      flex: 1 1 calc(100% - 10px); /* Un producto por fila en pantallas muy pequeñas */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
