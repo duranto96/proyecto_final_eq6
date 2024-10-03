@@ -74,7 +74,7 @@ function showRelatedProducts(relatedProducts) {
                     <img src="${product.image}" class="card-img-top" alt="${product.name}">
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
-                        <a href="product-info.html?productId=${product.id}" class="btn btn-primary">Ver</a>
+                        <a href="#" class="btn btn-primary" onClick="mostrarRelacionado(${product.id})">Ver</a>
                     </div>
                 </div>
             </div>
@@ -83,6 +83,11 @@ function showRelatedProducts(relatedProducts) {
 
     document.getElementById("related-products").innerHTML = htmlRelated;
 }
+
+function mostrarRelacionado(id) {
+    localStorage.setItem("productId", id); 
+    window.location.href = "product-info.html"; 
+} 
 
 getJSONData(productINFOURL).then(function(result) {
     if (result.status === "ok") {
