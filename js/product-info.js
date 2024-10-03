@@ -89,3 +89,48 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
   });
 });
+
+// Agregar la funcionalidad para enviar la calificación
+document.getElementById("rating-form").addEventListener("submit", (e) => {
+  e.preventDefault(); // Evitar el envío del formulario
+
+  const ratingValue = document.getElementById("new-rating").value;
+  const commentValue = document.getElementById("new-comment").value;
+
+  // Obtener el nombre de usuario del localStorage
+  const username = localStorage.getItem("username") || "Usuario Anónimo"; // Nombre de usuario o "Usuario Anónimo" si no hay
+
+  // Crear un objeto de comentario nuevo
+  const newComment = {
+    score: parseInt(ratingValue),
+    description: commentValue,
+    user: username, // Usa el nombre de usuario
+    dateTime: new Intl.DateTimeFormat('es-ES', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).format(new Date()), // Fecha y hora actual en formato latino
+  };
+
+  // Mostrar el nuevo comentario en la sección de comentarios
+  const comments = document.getElementById("comments");
+  comments.innerHTML += `
+    <div class="comment">
+        <p><strong>${newComment.user}</strong> - <span>${newComment.dateTime}</span></p>
+        <p>${newComment.description}</p>
+        <div class="rating">
+            ${getStarsHTML(newComment.score)}
+        </div>
+    </div>
+  `;
+
+  // Limpiar los campos del formulario
+  document.getElementById("new-rating").value = "";
+  document.getElementById("new-comment").value = "";
+});
+
+
