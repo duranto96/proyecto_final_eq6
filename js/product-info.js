@@ -3,7 +3,6 @@ let productINFOURL =
 let productCommentsURL =
   PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("productId") + EXT_TYPE;
 
-
 // Función para mostrar el producto
 function showProduct(product) {
   let htmlProduct = " ";
@@ -13,23 +12,21 @@ function showProduct(product) {
   for (let i = 1; i < product.images.length; i++) {
     const img = product.images[i];
     htmlProduct += `
-                    <img src="${img}" alt="Imágenes secundarias del producto">
+                    <img src="${img}" alt="Imágenes secundarias del producto" class="img-fluid">
                   `;
   }
 
   htmlProduct += `</div>`;
 
   htmlProduct += `<div id="imagenGrande" class="col-7">
-                <img src="${product.images[0]}" alt="Imagen principal del producto">
+                <img src="${product.images[0]}" alt="Imagen principal del producto" class="img-fluid">
               </div>`;
 
   htmlProduct += `<div id="info" class="col-3">
                     <h6> Categoría ${product.category}</h6>
                     <h7> ${product.soldCount} Unidades vendidas</h7>
                     <h2>${product.name}</h2>
-                    <p><strong>Precio:</strong> ${
-                      product.currency
-                    }${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
+                    <p><strong>Precio:</strong> $${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
                     <button class="btn btn-primary">Agregar al carrito</button>
                   </div>`;
 
@@ -72,30 +69,27 @@ function getStarsHTML(score) {
 
 // Obtener los comentarios usando getJSONData dentro del evento DOMContentLoaded
 document.addEventListener("DOMContentLoaded", (e) => {
-  // Obtener comentarios de la API
   getJSONData(productCommentsURL).then((object) => {
     if (object.status === "ok") {
       let commentsArray = object.data;
-      showComments(commentsArray); // Mostrar comentarios de la API
+      showComments(commentsArray);
     }
   });
 });
 
 // Agregar la funcionalidad para enviar la calificación
 document.getElementById("rating-form").addEventListener("submit", (e) => {
-  e.preventDefault(); // Evitar el envío del formulario
+  e.preventDefault();
 
   const ratingValue = document.getElementById("new-rating").value;
   const commentValue = document.getElementById("new-comment").value;
 
-  // Obtener el nombre de usuario del localStorage
-  const username = localStorage.getItem("username") || "Usuario Anónimo"; // Nombre de usuario o "Usuario Anónimo" si no hay
+  const username = localStorage.getItem("username") || "Usuario Anónimo";
 
-  // Crear un objeto de comentario nuevo
   const newComment = {
     score: parseInt(ratingValue),
     description: commentValue,
-    user: username, // Usa el nombre de usuario
+    user: username,
     dateTime: new Intl.DateTimeFormat('es-ES', {
       year: 'numeric',
       month: '2-digit',
@@ -104,10 +98,9 @@ document.getElementById("rating-form").addEventListener("submit", (e) => {
       minute: '2-digit',
       second: '2-digit',
       hour12: false
-    }).format(new Date()), // Fecha y hora actual en formato latino
+    }).format(new Date()),
   };
 
-  // Mostrar el nuevo comentario en la sección de comentarios
   const comments = document.getElementById("comments");
   comments.innerHTML += `
     <div class="comment">
@@ -119,29 +112,28 @@ document.getElementById("rating-form").addEventListener("submit", (e) => {
     </div>
   `;
 
-  // Limpiar los campos del formulario
   document.getElementById("new-rating").value = "";
   document.getElementById("new-comment").value = "";
 });
 
 function showRelatedProducts(relatedProducts) {
-    let htmlRelated = '';
+  let htmlRelated = '';
 
-    relatedProducts.forEach(product => {
-        htmlRelated += `
-            <div class="col-4">
-                <div class="card">
-                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <a href="#" class="btn btn-primary" onClick="mostrarRelacionado(${product.id})">Ver</a>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
+  relatedProducts.forEach(product => {
+      htmlRelated += `
+          <div class="col-4">
+              <div class="card related-product-card">
+                  <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                  <div class="card-body">
+                      <h5 class="card-title">${product.name}</h5>
+                      <a href="#" class="btn btn-primary" onClick="mostrarRelacionado(${product.id})">Ver</a>
+                  </div>
+              </div>
+          </div>
+      `;
+  });
 
-    document.getElementById("related-products").innerHTML = htmlRelated;
+  document.getElementById("related-products").innerHTML = htmlRelated;
 }
 
 function mostrarRelacionado(id) {
