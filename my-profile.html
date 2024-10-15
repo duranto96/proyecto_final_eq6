@@ -59,11 +59,35 @@
     </div>
   </nav>
   <main>
+
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+      <div class="row">
+          <div class="col-sm-12 col-lg-9">
+          <div class="perfil">
+              <h2>Perfil</h2>
+              <p>Cambia tu foto de perfil, edita tu información personal y luego pulsa el botón de guardar cambios</p>
+              <form>
+                  <label class="etiqueta" for="nombre">Nombre*  </label><span class="obligatorio">Este campo es obligatorio</span>
+                  <input type="text" id="nombre" name="nombre" required>
+                  <label class="etiqueta" for="segundo_nombre">Segundo nombre</label> 
+                  <input type="text" id="segundo_nombre" name="segundo_nombre">
+                  <label class="etiqueta" for="apellido">Apellido*  </label><span class="obligatorio">Este campo es obligatorio</span>  
+      
+                  <input type="text" id="apellido" name="apellido" required>
+                  <label class="etiqueta" for="segundo_apellido">Segundo apellido</label>
+                  <input type="text" id="segundo_apellido" name="segundo_apellido">   
+      
+                  <label class="etiqueta" for="email">Email* </label><span class="obligatorio">Este campo es obligatorio</span>
+                  <input type="email" id="email" name="email" required>
+                  <label class="etiqueta" for="telefono">Teléfono de contacto</label>
+                  <input type="tel" id="telefono" name="telefono">   
+      
+              </form>
+              </div>
+          </div>
+          </div>
+          </div>
+     
   </main>
   <footer class="text-muted">
     <div class="container">
