@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>eMercado - Mi perfil</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+  <link href="css/my-profile.css" rel="stylesheet">
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
@@ -46,26 +28,52 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span id="user-email"></span>
+              <span id="user-email"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="#" id="logout">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="#" id="logout">Cerrar sesión</a></li>
             </ul>
-         </li>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <h2 class="my-4 text-center">Perfil</h2>
+      <div id="profile-container" class="d-flex justify-content-end">
+        <div class="profile-box">
+          <!-- Foto de perfil -->
+          <div class="profile-section text-center">
+            <img src="img/default-profile.png" alt="Foto de perfil" id="profile-img">
+            <label for="profile-pic" class="form-label">Elige una foto de perfil</label>
+          </div>
+          <div class="profile-section text-center">
+            <input type="file" class="form-control" id="profile-pic" accept="image/*">
+          </div>
+          <!-- Modo Día/Noche -->
+          <div class="profile-section" id="darkModeOptions">
+            <label for="darkMode" class="form-label">Elige el modo de color predeterminado</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="mode" id="lightMode" value="light">
+              <label class="form-check-label" for="lightMode">Claro</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="mode" id="darkMode" value="dark">
+              <label class="form-check-label" for="darkMode">Oscuro</label>
+            </div>
+          </div>
+          <!-- Botón Guardar cambios -->
+          <div class="profile-section text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Guardar cambios</button>
+          </div>
+        </div>
       </div>
     </div>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted text-center">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
@@ -77,5 +85,5 @@
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
-
 </html>
+
