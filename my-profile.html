@@ -6,7 +6,7 @@
   <title>eMercado - Mi perfil</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/my-profile.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -49,10 +49,10 @@
           <div class="profile-section text-center">
             <img src="img/default-profile.png" alt="Foto de perfil" id="profile-img">
             <label for="profile-pic" class="form-label">Elige una foto de perfil</label>
+            <button id="change-photo" class="btn btn-secondary btn-sm">Cambia tu foto</button>
+            <input type="file" class="form-control d-none" id="profile-pic" accept="image/*">
           </div>
-          <div class="profile-section text-center">
-            <input type="file" class="form-control" id="profile-pic" accept="image/*">
-          </div>
+          
           <!-- Modo Día/Noche -->
           <div class="profile-section" id="darkModeOptions">
             <label for="darkMode" class="form-label">Elige el modo de color predeterminado</label>

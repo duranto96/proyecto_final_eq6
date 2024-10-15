@@ -380,6 +380,118 @@ a.custom-card:hover {
 
 
 
+/* Foto de perfil */
+.profile-section img {
+  width: 150px !important;
+  height: 150px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 10px !important;
+}
+
+.profile-section label {
+  display: block !important;
+  margin-top: 10px !important;
+}
+
+/* Botón Cambia tu foto */
+#change-photo {
+  margin-top: 10px !important;
+  padding: 12px 25px !important;
+  font-size: 14px !important;
+  border-radius: 5px !important;
+  background-color: #e4cf9b !important; /* Dorado */
+  color: #000 !important; /* Negro */
+  border: 2px solid #e4cf9b !important; /* Cambia el borde a dorado */
+  cursor: pointer !important;
+  transition: background-color 0.3s, border-color 0.3s !important;
+}
+
+#change-photo:hover {
+  background-color: #ddc374 !important; /* Dorado más oscuro */
+  border-color: #ddc374 !important;
+}
+
+/* Modo Día/Noche */
+#darkModeOptions {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin-bottom: 20px !important;
+  padding-left: 15px !important;
+}
+
+#darkModeOptions .form-check {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+#darkModeOptions label {
+  font-size: 16px !important;
+}
+
+#darkModeOptions input[type="radio"] {
+  appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  border: 2px solid #e4cf9b !important; /* Cambia el borde a dorado */
+  margin-right: 10px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s, border-color 0.3s !important;
+}
+
+#darkModeOptions input[type="radio"]:checked {
+  background-color: #ddc374 !important; /* Dorado al estar seleccionado */
+  border-color: #ddc374 !important; /* Borde dorado */
+}
+
+/* Botón Guardar cambios */
+.profile-section button {
+  padding: 12px 25px !important;
+  font-size: 18px !important;
+  border-radius: 5px !important;
+  background-color: #e4cf9b !important; /* Dorado */
+  color: #000 !important; /* Negro */
+  border: 2px solid #e4cf9b !important; /* Cambia el borde a dorado */
+  cursor: pointer !important;
+  transition: background-color 0.3s, border-color 0.3s !important;
+}
+
+.profile-section button:hover {
+  background-color: #ddc374 !important; /* Dorado más oscuro */
+  border-color: #ddc374 !important;
+}
+
+/* Responsividad y espacio */
+.profile-box {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important; /* Espacio entre secciones */
+  padding: 30px !important;
+  background-color: #ffffff !important;
+  border-radius: 15px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .profile-box {
+    padding: 20px !important;
+  }
+
+  .profile-section {
+    padding: 10px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+
+
+
 
 
 
