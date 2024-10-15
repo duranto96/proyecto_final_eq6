@@ -52,6 +52,12 @@ function mostrarUsuarioEnNavegacion() {
   } else {
     window.location.href = "login.html";
   }
+    
+  document.getElementById("logout").addEventListener("click", function() {
+    localStorage.removeItem("autenticado");
+    localStorage.removeItem("username");
+    window.location.href = "login.html";
+  });
 }
 
 window.onload = function() {
