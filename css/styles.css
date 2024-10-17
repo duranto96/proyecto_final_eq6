@@ -477,6 +477,22 @@ input {
 
 }
 
+/* Ajustar las tarjetas de productos relacionados en modo oscuro */
+body.dark-mode .card {
+  background-color: #333; /* Fondo oscuro para las tarjetas */
+  color: white; /* Texto blanco para asegurar que se vea */
+}
+
+body.dark-mode .card p {
+  color: white; /* Asegurar que la descripción se vea */
+  padding: 10px; /* Agregar algo de espacio interno si es necesario */
+}
+
+/* Ajustar botones */
+body.dark-mode .btn {
+  background-color: #007bff; /* Azul para los botones */
+  color: white; /* Texto blanco en los botones */
+}
 
 
 
