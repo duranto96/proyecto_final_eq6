@@ -63,3 +63,30 @@ function mostrarUsuarioEnNavegacion() {
 window.onload = function() {
   mostrarUsuarioEnNavegacion();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleSwitch = document.getElementById('checkbox');
+  const body = document.body;
+
+
+  // Verificar si hay una preferencia almacenada en el LocalStorage
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+      body.classList.add(currentTheme);
+      toggleSwitch.checked = currentTheme === 'dark-mode';
+  }
+
+  // Cambiar el tema y guardar la preferencia en el LocalStorage
+  toggleSwitch.addEventListener('change', () => {
+      if (toggleSwitch.checked) {
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+
+          localStorage.setItem('theme', 'dark-mode'); // Guardar preferencia
+      } else {
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          localStorage.setItem('theme', 'light-mode'); // Guardar preferencia
+      }
+  });
+});
