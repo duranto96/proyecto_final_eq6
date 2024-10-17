@@ -66,7 +66,7 @@
           <div class="perfil">
               <h2>Perfil</h2>
               <p>Cambia tu foto de perfil, edita tu información personal y luego pulsa el botón de guardar cambios</p>
-              <form>
+              <form class="was-validated">
                   <label class="etiqueta" for="nombre">Nombre*  </label><span class="obligatorio">Este campo es obligatorio</span>
                   <input type="text" id="nombre" name="nombre" required>
                   <label class="etiqueta" for="segundo_nombre">Segundo nombre</label> 
@@ -81,6 +81,7 @@
                   <input type="email" id="email" name="email" required>
                   <label class="etiqueta" for="telefono">Teléfono de contacto</label>
                   <input type="tel" id="telefono" name="telefono">   
+                  <div class="invalid-feedback">Debes completar todos los campos para continuar</div>
       
               </form>
               </div>
