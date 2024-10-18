@@ -6,18 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const alertContainer = document.getElementById("alertContainer"); // Referencia al contenedor de alerta
   
   function loadProfileData(){
-let email=localStorage.getItem("username");
-let userInfo=localStorage.getItem("datosFormulario");
-if (userInfo){
-  let userInfoUserObject=json.parse(userInfo);
- document.getElementById("nombre").value = userInfoUserObject.nombre;
-  document.getElementById("segundo_nombre").value= userInfoUserObject.segundo_nombre;
-  // document.getElementById("apellido").value;
-  // document.getElementById("segundo_apellido").value;
-  // document.getElementById("email").value;
-  // document.getElementById("telefono").value;
-
-}
+    let email=localStorage.getItem("username");
+    let userInfo=localStorage.getItem("datosFormulario");
+    if (userInfo){// obtiene la informacion de localstorage y setea los datos
+      let userInfoUserObject= JSON.parse(userInfo);
+      document.getElementById("nombre").value = userInfoUserObject.nombre;
+      document.getElementById("segundo_nombre").value= userInfoUserObject.segundo_nombre;
+      document.getElementById("apellido").value= userInfoUserObject.apellido;
+      document.getElementById("segundo_apellido").value= userInfoUserObject.segundo_apellido;
+      document.getElementById("email").value= userInfoUserObject.email;
+      document.getElementById("telefono").value= userInfoUserObject.telefono;
+    }
+    else{// obtiene el mail del guardado por login y setea el dato
+      document.getElementById("email").value = localStorage.getItem("username");
+    }
   }
 
   
@@ -30,7 +32,7 @@ if (userInfo){
     const storedImage = localStorage.getItem("profileImage");
     if (storedImage) {
       profileImage.src = storedImage; // Cargar imagen en el perfil
-      navProfileImage.src = storedImage; // Cargar imagen en la barra de navegación
+      //navProfileImage.src = storedImage; // Cargar imagen en la barra de navegación*****se cae aca
     }
   }
 
@@ -136,10 +138,7 @@ function guardarDatos() {
     apellido: apellido,
     segundo_apellido: segundo_apellido,
     email: email,
-    telefono: telefono,
-    
-
-    
+    telefono: telefono, 
   };
 
 
