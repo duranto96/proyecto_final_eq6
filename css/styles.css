@@ -595,5 +595,18 @@ margin-top: 50px;
 
 
 
+.subtotal {
+  font-size: 1.5rem; /* Tamaño de fuente más grande */
+  color: grey;/* Color para hacer que resalte */
+  margin-top: 10px; /* Espacio encima del subtotal */
+}
+
+.total {
+  font-size: 1.5rem; /* Aumentar el tamaño del total */
+  font-weight: bolder; /* Hacer el total aún más grueso */
+  display: inline-block; /* Asegurarse de que esté en línea con "Subtotal:" */
+  margin-left: 20px; /* Espacio entre "Subtotal:" y el número */
+  color: rgba(252, 161, 57, 0.856);
+}
 
 
