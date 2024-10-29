@@ -27,7 +27,7 @@ function showProduct(product) {
                     <h7> ${product.soldCount} Unidades vendidas</h7>
                     <h2>${product.name}</h2>
                     <p><strong>Precio:</strong> $${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
-                    <button class="btn btn-primary">Agregar al carrito</button>
+                    <button id = "agregarCarritoBtn" class="btn btn-primary">Agregar al carrito</button>
                   </div>`;
 
   htmlProduct += `<div id="Descripción" class="col-xs-12 col-md-9">
@@ -141,14 +141,56 @@ function mostrarRelacionado(id) {
     window.location.href = "product-info.html"; 
 } 
 
-getJSONData(productINFOURL).then(function(result) {
+function agregarAlCarrito(productData) {
+  let listaCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const prodIndice = listaCarrito.findIndex((prod) => prod.id === productData.id);
+
+  if (prodIndice > -1) {
+    listaCarrito[prodIndice].quantity += 1;
+  } else {
+    listaCarrito.push({
+      id: productData.id,
+      name: productData.name,
+      cost: productData.cost,
+      currency: productData.currency,
+      quantity: 1,
+      image: productData.images[0] 
+    });
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(listaCarrito));
+  console.log("Carrito actualizado:", listaCarrito);
+  
+  let confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+  confirmModal.show();
+
+  let agregarCarritoBtn = document.getElementById("agregarCarritoBtn");
+  agregarCarritoBtn.disabled = true;  
+  agregarCarritoBtn.innerText = "Agregado"; 
+
+  setTimeout(() => {
+    agregarCarritoBtn.disabled = false;  
+    agregarCarritoBtn.innerText = "Agregar al carrito";  
+  }, 3000);
+
+  document.getElementById("goToCartBtn").addEventListener("click", () => {
+    window.location.href = "cart.html";
+  });
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  getJSONData(productINFOURL).then((result) => {
     if (result.status === "ok") {
-        let productData = result.data;
-        showProduct(productData);
-        showRelatedProducts(productData.relatedProducts);
+      let productData = result.data;
+      showProduct(productData);
+      showRelatedProducts(productData.relatedProducts);
+      const agregarCarritoBtn = document.getElementById("agregarCarritoBtn");
+      agregarCarritoBtn.addEventListener("click", () => agregarAlCarrito(productData));
     } else {
-        console.error("Error al obtener los datos del producto");
+      console.error("Error al obtener los datos del producto");
     }
+  });
 });
 
-// JavaScript para el cambio de modo con LocalStorage
+
