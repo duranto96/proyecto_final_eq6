@@ -500,7 +500,98 @@ body.dark-mode .btn {
   color: white; /* Texto blanco en los botones */
 }
 
+.btn-less, .btn-more {
+  width: 30px; /* Ancho del botón */
+  height: 30px; /* Alto del botón */
+  font-size: 11px; /* Tamaño del texto dentro del botón */
+  padding: 5px; /* Espaciado interno del botón */
+  line-height: 1; /* Ajusta la alineación vertical del texto */
 
+
+}
+
+#quantity {
+font-size: 11px;
+width: 40px;
+height:30px; 
+
+}
+
+
+
+
+
+
+
+
+.resumen-compra {
+  width: 95%; /* Ajusta el tamaño del recibo */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+ /* background-color: #f9f9f9; */
+  margin: 100px; /* Centra el recibo */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.subtotal {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.subtotal-valor {
+  font-weight: bold;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between; /* Botones a los lados */
+
+}
+.opcion-envio {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.opcion-envio input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.opcion-envio label {
+  color: grey;
+  font-size: 14px;
+}
+
+.btn-cancelar,.btn-abonar {
+  width: 48%;
+  height:40px; 
+  font-size: 15px; /* Tamaño de la fuente */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 10px 20px;
+    
+}
+.btn-abonar{
+  background-color: rgba(252, 161, 57, 0.856);
+}
+
+.btn-cancelar{
+  background-color: rgba(238, 238, 95, 0.932);
+
+}
+.resumen-compra {
+  margin: auto; /* Margen superior e inferior de 20px, centrado */
+}
+
+#cart {
+margin-top: 50px; 
+
+}
 
 
 
