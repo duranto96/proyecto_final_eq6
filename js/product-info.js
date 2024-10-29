@@ -27,7 +27,6 @@ function showProduct(product) {
                     <h7> ${product.soldCount} Unidades vendidas</h7>
                     <h2>${product.name}</h2>
                     <p><strong>Precio:</strong> $${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost)}</p>
-                    <button class="btn btn-primary">Agregar al carrito</button>
                   </div>`;
 
   htmlProduct += `<div id="Descripción" class="col-xs-12 col-md-9">
@@ -132,13 +131,14 @@ function showRelatedProducts(relatedProducts) {
           </div>
       `;
   });
-
+console.log(product.id)
   document.getElementById("related-products").innerHTML = htmlRelated;
 }
 
 function mostrarRelacionado(id) {
     localStorage.setItem("productId", id); 
     window.location.href = "product-info.html"; 
+    
 } 
 
 getJSONData(productINFOURL).then(function(result) {

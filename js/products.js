@@ -1,5 +1,5 @@
 let productsURL = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
-
+console.log(productsURL)
 fetch(productsURL)
   .then((respuesta) => {
     console.log(respuesta);
