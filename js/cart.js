@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartContainer = document.getElementById("cart");
+    const reciboContainer = document.getElementById("recibo")
     let listaCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
     function showCart() {
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <div class="text-end">
                                                 <div class="input-group mb-2 moreless-input" style="width: 120px;">
                                                     <button class="btn btn-outline-secondary btn-less" type="button" onclick="decrement(${index})">-</button>
-                                                    <input type="number" class="text-center cantidad" id="quantity-${index}" value="${product.quantity}" min="1">
+                                                    <input type="text" class="text-center cantidad" id="quantity-${index}" value="${product.quantity}">
                                                     <button class="btn btn-outline-secondary btn-more" type="button" onclick="increment(${index})">+</button>
                                                 </div>
                                                 <small class="text-muted subtotal">${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost * product.quantity)}</small>
@@ -42,32 +43,38 @@ document.addEventListener("DOMContentLoaded", () => {
             cartContainer.insertAdjacentHTML("beforeend", htmlProduct);
         });
 
-        // Agregar la sección de recibo
-        let htmlRecibo = `
-            <div class="col-md-4 resumen-compra">
-                <h3>Recibo</h3>
-                <div class="subtotal">
-                    <p><strong>Subtotal:</strong> <span class="total"></span></p> <!-- Monto aquí -->
-                    <div class="opcion-envio">
-                        <input type="checkbox" id="envio-gratis" name="envio-gratis">
-                        <label for="envio-gratis" class="text-muted">Envío mi compra a mi domicilio (gratis)</label>
-                    </div>
-                    <div class="botones">
-                        <button class="btn-cancelar">Cancelar compra</button>
-                        <button class="btn-abonar">Abonar compra</button>
-                    </div>
-                </div>
+            }
+
+function showRecibo() {
+    // Agregar la sección de recibo
+    let htmlRecibo = `
+    <div class="col-md-4 resumen-compra">
+        <h3>Recibo</h3>
+        <div class="subtotal">
+            <p><strong>Subtotal:</strong> <span class="total"></span></p> <!-- Monto aquí -->
+            <div class="opcion-envio">
+                <input type="checkbox" id="envio-gratis" name="envio-gratis">
+                <label for="envio-gratis" class="text-muted">Envío mi compra a mi domicilio (gratis)</label>
             </div>
-        `;
-        cartContainer.insertAdjacentHTML("beforeend", htmlRecibo);
-        actualizarSubtotal(); // Añadir los listeners para actualizar el subtotal
-    }
+            <div class="botones">
+                <button class="btn-cancelar">Cancelar compra</button>
+                <button class="btn-abonar">Abonar compra</button>
+            </div>
+        </div>
+    </div>
+`;
+reciboContainer.insertAdjacentHTML("beforeend", htmlRecibo);
+actualizarSubtotal(); // Añadir los listeners para actualizar el subtotal
+
+
+}
 
     // Función para incrementar la cantidad
     window.increment = function(index) {
         listaCarrito[index].quantity += 1;
         localStorage.setItem("carrito", JSON.stringify(listaCarrito));
         showCart(); // Actualizar la vista del carrito
+        actualizarSubtotal();
     }
 
     // Función para decrementar la cantidad
@@ -76,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             listaCarrito[index].quantity -= 1;
             localStorage.setItem("carrito", JSON.stringify(listaCarrito));
             showCart(); // Actualizar la vista del carrito
+            actualizarSubtotal();
         }
     }
 
@@ -105,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mostrar el carrito al cargar la página
     showCart();
+    showRecibo();
 });
 
 

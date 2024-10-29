@@ -510,19 +510,12 @@ body.dark-mode .btn {
 
 }
 
-#quantity {
+.cantidad{
 font-size: 11px;
 width: 40px;
 height:30px; 
 
 }
-
-
-
-
-
-
-
 
 .resumen-compra {
   width: 95%; /* Ajusta el tamaño del recibo */
@@ -588,12 +581,10 @@ height:30px;
   margin: auto; /* Margen superior e inferior de 20px, centrado */
 }
 
-#cart {
+#cart, #recibo {
 margin-top: 50px; 
 
 }
-
-
 
 .subtotal {
   font-size: 1.5rem; /* Tamaño de fuente más grande */
@@ -608,5 +599,4 @@ margin-top: 50px;
   margin-left: 20px; /* Espacio entre "Subtotal:" y el número */
   color: rgba(252, 161, 57, 0.856);
 }
-
-
+  
