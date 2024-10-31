@@ -272,43 +272,34 @@ a.custom-card:hover {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  
 }
 
 #imagenes-chicas img {
   width: 110%;
   margin: 5px;
-  
 }
 
 #imagenGrande img {
   width: 90%;
   margin: 5px;
-  
 }
-
-
-
 
 /* Estilos para pantallas pequeñas (móviles) */
 @media (max-width: 767px) {
   #imagenes-chicas {
     display: flex;
     flex-wrap: wrap;
-    width: 50%; 
+    width: 50%;
   }
 
-  #imagenes-chicas img { /* Aplica los estilos directamente a las imágenes dentro del contenedor */
+  #imagenes-chicas img {
+    /* Aplica los estilos directamente a las imágenes dentro del contenedor */
     margin: 10px; /* Ajusta el margen a tu gusto */
     width: 60%; /* Ajusta el ancho según el número de columnas que desees */
-    flex-basis: 50%; 
+    flex-basis: 50%;
     height: auto; /* Permite que la altura se ajuste automáticamente manteniendo la proporción */
   }
 }
-
-
-
-
 
 #product {
   margin-top: 1.5rem;
@@ -357,104 +348,98 @@ a.custom-card:hover {
 /* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
   .related-product-card {
-      flex: 1 1 calc(50% - 10px); /* Dos productos por fila en pantallas más pequeñas */
+    flex: 1 1 calc(50% - 10px); /* Dos productos por fila en pantallas más pequeñas */
   }
 }
 
 @media (max-width: 576px) {
   .related-product-card {
-      flex: 1 1 calc(100% - 10px); /* Un producto por fila en pantallas muy pequeñas */
+    flex: 1 1 calc(100% - 10px); /* Un producto por fila en pantallas muy pequeñas */
   }
 }
 
-
- /* Estilos para los modos claro y oscuro */
-  body.light-mode {
-    background-color: white;
-    color: black;
+/* Estilos para los modos claro y oscuro */
+body.light-mode {
+  background-color: white;
+  color: black;
 }
 
 body.dark-mode {
-    background-color: #121212;
-    color: white;
+  background-color: #121212;
+  color: white;
 }
 
 /* Contenedor del interruptor */
 .theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    /*justify-content: center;*/
-    margin: 8px;
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+  margin: 8px;
 }
 
 /* Iconos de luna y sol */
-.moon-icon, .sun-icon {
-    font-size: 15px;
-    
+.moon-icon,
+.sun-icon {
+  font-size: 15px;
 }
 
 /* Estilo del interruptor */
 .theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 25px;
-    height: 18px;
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 18px;
 }
 
 .theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 20px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 10px;
-    width: 10px;
-    left: 3px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 45%;
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 3px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 45%;
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:checked + .slider:before {
-    transform: translateX(10px);
+  transform: translateX(10px);
 }
 
-
 .perfil {
-  
   margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
 }
 
 .seleccionaImagen {
-  
-  margin:  0 auto;
+  margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
 }
-
-
 
 label {
   display: block;
@@ -466,21 +451,16 @@ input {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius:   
-3px;
+  border-radius: 3px;
 }
 
 .obligatorio {
-
-  color:#9e9e9e;
+  color: #9e9e9e;
   float: center;
-
 }
 
 .etiqueta {
   float: left;
-  
-
 }
 
 /* Ajustar las tarjetas de productos relacionados en modo oscuro */
@@ -500,21 +480,19 @@ body.dark-mode .btn {
   color: white; /* Texto blanco en los botones */
 }
 
-.btn-less, .btn-more {
+.btn-less,
+.btn-more {
   width: 30px; /* Ancho del botón */
   height: 30px; /* Alto del botón */
   font-size: 11px; /* Tamaño del texto dentro del botón */
   padding: 5px; /* Espaciado interno del botón */
   line-height: 1; /* Ajusta la alineación vertical del texto */
-
-
 }
 
-.cantidad{
-font-size: 11px;
-width: 40px;
-height:30px; 
-
+.cantidad {
+  font-size: 11px;
+  width: 40px;
+  height: 30px;
 }
 
 .resumen-compra {
@@ -522,7 +500,7 @@ height:30px;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
- /* background-color: #f9f9f9; */
+  /* background-color: #f9f9f9; */
   margin: 100px; /* Centra el recibo */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -541,7 +519,6 @@ height:30px;
 .botones {
   display: flex;
   justify-content: space-between; /* Botones a los lados */
-
 }
 .opcion-envio {
   display: flex;
@@ -560,35 +537,34 @@ height:30px;
   font-size: 14px;
 }
 
-.btn-cancelar,.btn-abonar {
+.btn-cancelar,
+.btn-abonar {
   width: 48%;
-  height:40px; 
+  height: 40px;
   font-size: 15px; /* Tamaño de la fuente */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Esquinas redondeadas */
-    padding: 10px 20px;
-    
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Esquinas redondeadas */
+  padding: 10px 20px;
 }
-.btn-abonar{
+.btn-abonar {
   background-color: rgba(252, 161, 57, 0.856);
 }
 
-.btn-cancelar{
+.btn-cancelar {
   background-color: rgba(238, 238, 95, 0.932);
-
 }
 .resumen-compra {
   margin: auto; /* Margen superior e inferior de 20px, centrado */
 }
 
-#cart, #recibo {
-margin-top: 50px; 
-
+#cart,
+#recibo {
+  margin-top: 50px;
 }
 
 .subtotal {
   font-size: 1.5rem; /* Tamaño de fuente más grande */
-  color: grey;/* Color para hacer que resalte */
+  color: grey; /* Color para hacer que resalte */
   margin-top: 10px; /* Espacio encima del subtotal */
 }
 
@@ -599,4 +575,3 @@ margin-top: 50px;
   margin-left: 20px; /* Espacio entre "Subtotal:" y el número */
   color: rgba(252, 161, 57, 0.856);
 }
-  
