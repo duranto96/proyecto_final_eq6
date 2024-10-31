@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM completamente cargado"); // Esto debe aparecer en la consola
   const cartContainer = document.getElementById("cart");
   const reciboContainer = document.getElementById("recibo");
-  let listaCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
   console.log(listaCarrito); // Asegurarnos que estén los elementos del carrito
 
   function showCart() {
@@ -125,24 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
       totalElement.textContent = `${currency}${new Intl.NumberFormat(
         "es-ES"
       ).format(total)}`; // Muestra el subtotal
-    }
-  }
-
-  // Función para actualizar el contador del badge en el menú
-  function updateCartCount() {
-    // Recalcular el total de productos en listaCarrito
-    const cartCount = listaCarrito.reduce(
-      (total, item) => total + (parseInt(item.quantity) || 0),
-      0
-    );
-
-    const cartCountElement = document.getElementById("cart-count");
-    console.log("Cart Count:", cartCount); // Verificar el valor de cartCount
-    if (cartCountElement) {
-      cartCountElement.textContent = cartCount; // Actualiza el badge
-      console.log("Badge Updated"); // Confirmar que el badge se actualizó
-    } else {
-      console.log("Badge element not found"); // Verificar si el elemento existe
     }
   }
 
