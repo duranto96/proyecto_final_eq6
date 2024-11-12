@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     listaCarrito.forEach((product, index) => {
       // Estructura HTML para cada producto
       let htmlProduct = `
-                <div class="row product" data-price="${product.cost}">
+                  <div class="row product" data-price="${product.cost}" data-currency="${product.currency}">
                     <div class="col">
                         <div class="comment">
                             <div class="row">
@@ -63,24 +63,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function showRecibo() {
     // Agregar la sección de recibo
     let htmlRecibo = `
-    <div class="col-md-4 resumen-compra">
-        <h3>Recibo</h3>
-        <div class="subtotal">
-            <p><strong>Subtotal:</strong> <span class="total"></span></p> <!-- Monto aquí -->
-            <div class="opcion-envio">
-                <input type="checkbox" id="envio-gratis" name="envio-gratis">
-                <label for="envio-gratis" class="text-muted">Envío mi compra a mi domicilio (gratis)</label>
-            </div>
-            <div class="botones">
-                <button class="btn-cancelar">Cancelar compra</button>
-                <button class="btn-abonar">Abonar compra</button>
-            </div>
-        </div>
-    </div>
-`;
+      <div class="col-md-4 resumen-compra">
+          <h3>Recibo</h3>
+          <div class="subtotal">
+              <p><strong>Subtotal en Pesos:</strong> <span class="total-pesos"></span></p> <!-- Subtotal en Pesos -->
+              <p><strong>Subtotal en Dólares:</strong> <span class="total-dolares"></span></p> <!-- Subtotal en Dólares -->
+              <div class="opcion-envio">
+                  <input type="checkbox" id="envio-gratis" name="envio-gratis">
+                  <label for="envio-gratis" class="text-muted">Envío mi compra a mi domicilio (gratis)</label>
+              </div>
+              <div class="botones">
+                  <button class="btn-cancelar">Cancelar compra</button>
+                  <button class="btn-abonar">Abonar compra</button>
+              </div>
+          </div>
+      </div>
+    `;
     reciboContainer.insertAdjacentHTML("beforeend", htmlRecibo);
-    actualizarSubtotal(); // Añadir los listeners para actualizar el subtotal
+    actualizarSubtotal(); // Actualizar el subtotal después de insertar el HTML del recibo
   }
+  
 
   // Función para incrementar la cantidad
   window.increment = function (index) {
@@ -102,31 +104,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Función para actualizar el subtotal en tiempo real
   function actualizarSubtotal() {
-    let total = 0; // Inicializa el total
+    let totalPesos = 0; // Inicializa el total en pesos
+    let totalDolares = 0; // Inicializa el total en dólares
+  
+    // Selecciona todos los elementos de la clase 'cantidad'
     const subtotalElements = document.querySelectorAll(".cantidad");
-
+  
+    // Itera sobre cada cantidad en el carrito
     subtotalElements.forEach((input, index) => {
       const product = input.closest(".product");
-      const precio = parseFloat(product.getAttribute("data-price"));
-      const cantidad = parseInt(input.value);
-
+      const precio = parseFloat(product.getAttribute("data-price")); // Obtiene el precio del producto
+      const cantidad = parseInt(input.value); // Obtiene la cantidad del producto
+      const moneda = product.getAttribute("data-currency"); // Obtiene la moneda del producto
+  
       // Validar precio y cantidad antes de sumar
       if (!isNaN(precio) && !isNaN(cantidad) && cantidad > 0) {
-        total += precio * cantidad; // Suma al total solo si es válido
+        if (moneda === "$" || moneda === "UYU") {
+          totalPesos += precio * cantidad; // Suma al total en pesos si la moneda es pesos o UYU
+        } else if (moneda === "USD") {
+          totalDolares += precio * cantidad; // Suma al total en dólares si la moneda es dólares
+        }
       }
     });
-
-    // Actualiza el subtotal en la vista
-    const totalElement = document.querySelector(".total"); // Selecciona el elemento donde se muestra el total
-    if (totalElement) {
-      const currency = listaCarrito[0]?.currency || ""; // Obtiene la currency del primer producto
-      totalElement.textContent = `${currency}${new Intl.NumberFormat(
-        "es-ES"
-      ).format(total)}`; // Muestra el subtotal
+  
+    // Actualiza el subtotal en pesos
+    const totalElementPesos = document.querySelector(".total-pesos");
+    if (totalElementPesos) {
+      totalElementPesos.textContent = `$${new Intl.NumberFormat("es-ES").format(totalPesos)}`; // Muestra el subtotal en pesos
+    }
+  
+    // Actualiza el subtotal en dólares
+    const totalElementDolares = document.querySelector(".total-dolares");
+    if (totalElementDolares) {
+      totalElementDolares.textContent = `USD ${new Intl.NumberFormat("es-ES").format(totalDolares)}`; // Muestra el subtotal en dólares
     }
   }
+  
+  
+  
 
   // Mostrar el carrito al cargar la página
   showCart();
