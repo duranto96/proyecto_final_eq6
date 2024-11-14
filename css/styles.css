@@ -498,6 +498,7 @@ body.dark-mode .btn {
 .resumen-compra {
   width: 100%; /* Ajusta el tamaño del recibo */
   border: 1px solid #ccc;
+  text-align: center;
   padding: 20px;
   border-radius: 5px;
   /* background-color: #f9f9f9; */
@@ -539,12 +540,18 @@ body.dark-mode .btn {
 
 .btn-cancelar,
 .btn-abonar {
-  width: 48%;
-  height: 40px;
+  width: 140px; 
+  height: 40px; 
+  align-items: center;     /* Centra verticalmente */ 
+  white-space: nowrap; /* Evita que el texto se divida */
+  margin: 3px;
+  line-height: 1;
   font-size: 15px; /* Tamaño de la fuente */
   border: none; /* Sin borde */
   border-radius: 8px; /* Esquinas redondeadas */
-  padding: 10px 20px;
+  padding: 10px 10px;
+  box-sizing: border-box; 
+  display: flex;
 }
 .btn-abonar {
   background-color: rgba(252, 161, 57, 0.856);
