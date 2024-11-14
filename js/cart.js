@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     listaCarrito.forEach((product, index) => {
       // Estructura HTML para cada producto
       let htmlProduct = `
-                  <div class="row product" data-price="${product.cost}" data-currency="${product.currency}">
+                  <div class="row product" data-price="${
+                    product.cost
+                  }" data-currency="${product.currency}">
                     <div class="col">
                         <div class="comment">
                             <div class="row">
@@ -83,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     reciboContainer.insertAdjacentHTML("beforeend", htmlRecibo);
     actualizarSubtotal(); // Actualizar el subtotal después de insertar el HTML del recibo
   }
-  
 
   // Función para incrementar la cantidad
   window.increment = function (index) {
@@ -108,17 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function actualizarSubtotal() {
     let totalPesos = 0; // Inicializa el total en pesos
     let totalDolares = 0; // Inicializa el total en dólares
-  
+
     // Selecciona todos los elementos de la clase 'cantidad'
     const subtotalElements = document.querySelectorAll(".cantidad");
-  
+
     // Itera sobre cada cantidad en el carrito
     subtotalElements.forEach((input, index) => {
       const product = input.closest(".product");
       const precio = parseFloat(product.getAttribute("data-price")); // Obtiene el precio del producto
       const cantidad = parseInt(input.value); // Obtiene la cantidad del producto
       const moneda = product.getAttribute("data-currency"); // Obtiene la moneda del producto
-  
+
       // Validar precio y cantidad antes de sumar
       if (!isNaN(precio) && !isNaN(cantidad) && cantidad > 0) {
         if (moneda === "$" || moneda === "UYU") {
@@ -128,28 +129,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-  
+
     // Actualiza el subtotal en pesos
     const totalElementPesos = document.querySelector(".total-pesos");
     if (totalElementPesos) {
-      totalElementPesos.textContent = `$${new Intl.NumberFormat("es-ES").format(totalPesos)}`; // Muestra el subtotal en pesos
+      totalElementPesos.textContent = `$${new Intl.NumberFormat("es-ES").format(
+        totalPesos
+      )}`; // Muestra el subtotal en pesos
     }
-  
+
     // Actualiza el subtotal en dólares
     const totalElementDolares = document.querySelector(".total-dolares");
     if (totalElementDolares) {
-      totalElementDolares.textContent = `USD ${new Intl.NumberFormat("es-ES").format(totalDolares)}`; // Muestra el subtotal en dólares
+      totalElementDolares.textContent = `USD ${new Intl.NumberFormat(
+        "es-ES"
+      ).format(totalDolares)}`; // Muestra el subtotal en dólares
     }
   }
-  
-  
-  
 
   function showFormaDeEnvio() {
-    let htmlEnvio =  `
-<div   class="card"> 
-    <div class="card-body">
-        <h2 class="card-title">Forma de Envío</h2>
+    let htmlEnvio = `
+<div> 
+    <div>
+        <h2>Forma de Envío</h2>
         <p>Elige tu forma de envío:</p>
 
         <div class="form-check">
@@ -172,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>   
 
 
-        <h2 class="card-title">Dirección de Envío</h2>
+        <h2>Dirección de Envío</h2>
 
         <div class="mb-3">
             <label for="departamento" class="form-label">Departamento*</label>
@@ -206,17 +208,13 @@ class="mb-3">
     </div>
     </div>
 `;
-document.getElementById('formulariodeenvio');
+    document.getElementById("formulariodeenvio");
     formulariodeenvio.innerHTML = htmlEnvio;
   }
-
-
 
   // Mostrar el carrito al cargar la página
   showCart();
   showRecibo();
   updateCartCount();
   showFormaDeEnvio();
-
-
 });
