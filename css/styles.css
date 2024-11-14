@@ -496,7 +496,7 @@ body.dark-mode .btn {
 }
 
 .resumen-compra {
-  width: 95%; /* Ajusta el tamaño del recibo */
+  width: 100%; /* Ajusta el tamaño del recibo */
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
@@ -575,3 +575,38 @@ body.dark-mode .btn {
   margin-left: 20px; /* Espacio entre "Subtotal:" y el número */
   color: rgba(252, 161, 57, 0.856);
 }
+
+#cart{
+  padding-left: 1%;
+}
+
+.comment{
+  padding: 2%;
+  margin:auto;
+  margin-bottom: 1%;
+  width: 100%;
+}
+
+#formulariodeenvio {
+padding-top:  2%; 
+
+}
+
+.card-body{
+  padding: 30px;
+}
+
+.card-title {
+  margin-bottom: 5%; /* Ajusta el valor según tus preferencias */
+}
+
+#form-check2{
+  margin-bottom: 10%; /* Ajusta el valor según tus preferencias */
+}
+
+#recibo{
+  margin-bottom: 50px;
+}
+
+
+
