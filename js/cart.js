@@ -87,53 +87,89 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  function actualizarSubtotal() {
 
-    const subtotalElements = document.querySelectorAll(".cantidad");
+// Función para actualizar el subtotal
+function actualizarSubtotal() {
+  subtotalPesos = 0; // Reiniciar subtotal cada vez que se recalcula
 
-    subtotalElements.forEach((input, index) => {
-      const product = input.closest(".product");
-      const precio = parseFloat(product.getAttribute("data-price"));
-      const cantidad = parseInt(input.value);
-      const moneda = product.getAttribute("data-currency");
+  const subtotalElements = document.querySelectorAll(".cantidad");
+  subtotalElements.forEach((input) => {
+    const product = input.closest(".product");
+    const precio = parseFloat(product.getAttribute("data-price"));
+    const cantidad = parseInt(input.value);
+    const moneda = product.getAttribute("data-currency");
 
-      if (!isNaN(precio) && !isNaN(cantidad) && cantidad > 0) {
-        if (moneda === "$" || moneda === "UYU") {
-          subtotalPesos += precio * cantidad;
-        } else if (moneda === "USD") {
-          subtotalPesos += precio * cantidad *42;
-        }
-      }
-    });
-
-    document.querySelector(".total-pesos").textContent = subtotalPesos;
-    
-    actualizarCostosTotales(subtotalPesos);
-  }
-
-  function actualizarCostosTotales(totalPesos) {
-
-    const tipoEnvio = document.querySelector("input[name='shipping']:checked");
-
-    if (tipoEnvio) {
-      switch (tipoEnvio.id) {
-        case "premium":
-          costoEnvio = totalPesos * 0.15;
-          break;
-        case "express":
-          costoEnvio = totalPesos * 0.07;
-          break;
-        case "standard":
-          costoEnvio = totalPesos * 0.05;
-          break;
+    if (!isNaN(precio) && !isNaN(cantidad) && cantidad > 0) {
+      if (moneda === "$" || moneda === "UYU") {
+        subtotalPesos += precio * cantidad;
+      } else if (moneda === "USD") {
+        subtotalPesos += precio * cantidad * 42; // Conversión de dólares a pesos
       }
     }
+  });
 
-    const totalFinal = totalPesos + costoEnvio;
-    
-    document.querySelector(".total-envio").textContent = costoEnvio;
-    document.querySelector(".total-final").textContent = totalFinal;
+  // Mostrar el subtotal actualizado
+  document.querySelector(".total-pesos").textContent = formatCurrency(subtotalPesos);
+
+  // Llamamos a la función de costos (costo de envío) sin recalcular el subtotal
+  actualizarCostos();
+}
+
+// Función para actualizar los costos (costo de envío)
+function actualizarCostos() {
+  const tipoEnvio = document.querySelector("input[name='shipping']:checked");
+  
+  costoEnvio = 0; // Reiniciar el costo de envío cada vez que se actualiza
+
+  if (tipoEnvio) {
+    switch (tipoEnvio.id) {
+      case "premium":
+        costoEnvio = subtotalPesos * 0.15; // 15% de costo de envío
+        break;
+      case "express":
+        costoEnvio = subtotalPesos * 0.07; // 7% de costo de envío
+        break;
+      case "standard":
+        costoEnvio = subtotalPesos * 0.05; // 5% de costo de envío
+        break;
+    }
   }
+
+  // Mostrar el costo de envío actualizado
+  document.querySelector(".total-envio").textContent = formatCurrency(costoEnvio);
+
+  // Calcular el total final (subtotal + costo de envío)
+  const totalFinal = subtotalPesos + costoEnvio;
+
+  // Mostrar el total final
+  document.querySelector(".total-final").textContent = formatCurrency(totalFinal);
+}
+
+// Función para formatear la moneda
+const formatCurrency = (amount) => new Intl.NumberFormat("es-ES", {
+  style: "currency",
+  currency: "UYU",  // Cambiar la moneda si es necesario
+}).format(amount);
+
+// Inicializar listeners para cambios en la cantidad de productos y tipo de envío
+function initListeners() {
+  // Escuchar cambios en la cantidad de productos
+  document.querySelectorAll(".cantidad").forEach(input => {
+    input.addEventListener("input", actualizarSubtotal); // Actualizamos solo el subtotal
+  });
+
+  // Escuchar cambios en el tipo de envío
+  document.querySelectorAll("input[name='shipping']").forEach(input => {
+    input.addEventListener("change", actualizarCostos); // Actualizamos solo el costo de envío
+  });
+}
+
+// Inicializar cuando la página cargue
+document.addEventListener("DOMContentLoaded", () => {
+  initListeners(); // Iniciamos los listeners
+  actualizarSubtotal(); // Mostrar los totales iniciales
+});
+
 
   function showFormaDeEnvio() {
     let htmlEnvio = `
