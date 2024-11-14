@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM completamente cargado"); // Esto debe aparecer en la consola
   const cartContainer = document.getElementById("cart");
   const reciboContainer = document.getElementById("recibo");
+  const formulariodeenvio = document.getElementById("formulariodeenvio");
 
   console.log(listaCarrito); // Asegurarnos que estén los elementos del carrito
 
@@ -128,8 +129,78 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function showFormaDeEnvio() {
+    let htmlEnvio =  `
+<div   class="card"> 
+    <div class="card-body">
+        <h2 class="card-title">Forma de Envío</h2>
+        <p>Elige tu forma de envío:</p>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="shipping" id="premium">
+            <label class="form-check-label" for="premium">
+                Premium 2 a 5 días (15%)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="shipping" id="express">
+            <label class="form-check-label" for="express">
+                Express 5 a 8 días (7%)
+            </label>
+        </div>
+        <div class="form-check" id="form-check2">
+            <input class="form-check-input" type="radio" name="shipping" id="standard">
+            <label class="form-check-label" for="standard">
+                Standard 12 a 15 días (5%)
+            </label>
+        </div>   
+
+
+        <h2 class="card-title">Dirección de Envío</h2>
+
+        <div class="mb-3">
+            <label for="departamento" class="form-label">Departamento*</label>
+            <input type="text" class="form-control" id="departamento"   
+required>
+        </div>
+
+        <div class="mb-3">
+            <label for="localidad" class="form-label">Localidad*</label>
+            <input type="text" class="form-control" id="localidad"   
+required>
+        </div>
+
+        <div   
+class="mb-3">
+            <label for="calle" class="form-label">Calle*</label>
+            <input type="text" class="form-control" id="calle" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="numero_de_puerta" class="form-label">Número de Puerta*</label>
+            <input type="text" class="form-control" id="numero_de_puerta" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="esquina" class="form-label">Esquina*</label>
+            <input type="text" class="form-control" id="esquina" required>
+        </div>
+
+    
+    </div>
+    </div>
+`;
+document.getElementById('formulariodeenvio');
+    formulariodeenvio.innerHTML = htmlEnvio;
+  }
+
+
+
   // Mostrar el carrito al cargar la página
   showCart();
   showRecibo();
   updateCartCount();
+  showFormaDeEnvio();
+
+
 });
