@@ -576,23 +576,22 @@ body.dark-mode .btn {
   color: rgba(252, 161, 57, 0.856);
 }
 
-#cart{
+#cart {
   padding-left: 1%;
 }
 
-.comment{
+.comment {
   padding: 2%;
-  margin:auto;
+  margin: auto;
   margin-bottom: 1%;
   width: 100%;
 }
 
 #formulariodeenvio {
-padding-top:  2%; 
-
+  padding-top: 2%;
 }
 
-.card-body{
+.card-body {
   padding: 30px;
 }
 
@@ -600,13 +599,65 @@ padding-top:  2%;
   margin-bottom: 5%; /* Ajusta el valor según tus preferencias */
 }
 
-#form-check2{
+#form-check2 {
   margin-bottom: 10%; /* Ajusta el valor según tus preferencias */
 }
 
-#recibo{
+#recibo {
   margin-bottom: 50px;
 }
 
+.containerCart {
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
 
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group .checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.form-group input[type="checkbox"] {
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.row {
+  display: flex;
+  gap: 10px;
+}
+.row input {
+  flex: 1;
+}
+.receipt {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
+.inputs-checkboxes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.section-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.row {
+  justify-content: center;
+}
