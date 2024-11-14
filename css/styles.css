@@ -639,10 +639,6 @@ body.dark-mode .btn {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.row {
-  display: flex;
-  gap: 10px;
-}
 .row input {
   flex: 1;
 }
@@ -663,9 +659,6 @@ body.dark-mode .btn {
   align-items: center;
 }
 
-.row {
-  justify-content: center;
-}
 .flex-cart {
   display: flex;
 }

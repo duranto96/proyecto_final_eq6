@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     <button class="btn btn-outline-secondary btn-less" type="button" onclick="decrement(${index})">-</button>
                                                     <input type="text" class="text-center cantidad" id="quantity-${index}" value="${product.quantity}">
                                                     <button class="btn btn-outline-secondary btn-more" type="button" onclick="increment(${index})">+</button>
+                                                    <button class="btn btn-danger delete-product" onclick="deleteProduct(${index})">Eliminar</button>
                                                 </div>
                                                 <small class="text-muted subtotal">${product.currency}${new Intl.NumberFormat("es-ES").format(product.cost * product.quantity)}</small>
                                             </div>
@@ -229,6 +230,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  window.deleteProduct = function (index) {
+    listaCarrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(listaCarrito));
+    showCart();
+    updateCartCount();
+    actualizarSubtotal();
+    actualizarCostos();
+  };
 
   showCart();
   showRecibo();
