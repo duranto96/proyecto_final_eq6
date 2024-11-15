@@ -61,10 +61,40 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <div class="botones">
                   <button class="btn-cancelar">Cancelar compra</button>
-                  <button class="btn-abonar">Abonar compra</button>
+                  <button class="btn-abonar" data-bs-toggle="modal" data-bs-target="#">Finalizar Compra</button>
               </div>
           </div>
       </div>
+      <div class="modal fade" id="modalCompraExitosa" tabindex="-1">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content" style="background-color:#6dc365">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:white">¡Tu compra ha sido exitosa!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p style="color:white">¡Gracias!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalCompraFallida" tabindex="-1">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content" style="background-color:#ff3936">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:white">¡Debes completar los datos para realizar la compra!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     `;
     reciboContainer.insertAdjacentHTML("beforeend", htmlRecibo);
     actualizarSubtotal();
@@ -247,3 +277,65 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const botonAbonar = document.querySelector(".btn-abonar");
+  const modalExitosa = document.getElementById("modalCompraExitosa");
+  const modalFallida = document.getElementById("modalCompraFallida");
+
+  // Validación al hacer clic en el botón "Finalizar Compra"
+  botonAbonar.addEventListener("click", () => {
+    if (validarFormulario()) {
+      mostrarModal(modalExitosa); // Compra exitosa
+    } else {
+      mostrarModal(modalFallida); // Compra fallida
+    }
+  });
+
+  // Función de validación
+  function validarFormulario() {
+    // Campos obligatorios (texto y numéricos)
+    const camposRequeridos = [
+      "departamento",
+      "localidad",
+      "calle",
+      "numero_de_puerta",
+      "esquina",
+      "numero-tarjeta",
+      "nombre-titular",
+      "cedula",
+      "vencimiento",
+      "cvc",
+    ];
+
+    // Verificar que todos los campos estén llenos
+    const camposCompletos = camposRequeridos.every((id) => {
+      const campo = document.getElementById(id);
+      return campo && campo.value.trim() !== "";
+    });
+
+    // Verificar que un radio button de envío esté seleccionado
+    const radios = ["premium", "express", "standard"];
+    const radioSeleccionado = radios.some((id) => {
+      const radio = document.getElementById(id);
+      return radio && radio.checked;
+    });
+
+    // Verificar que al menos un método de pago esté seleccionado
+    const checkboxes = ["transferencia", "tarjeta"];
+    const checkboxSeleccionado = checkboxes.some((id) => {
+      const checkbox = document.getElementById(id);
+      return checkbox && checkbox.checked;
+    });
+
+    // Retornar true solo si todas las condiciones se cumplen
+    return camposCompletos && radioSeleccionado && checkboxSeleccionado;
+  }
+
+  // Función para mostrar el modal correspondiente
+  function mostrarModal(modal) {
+    const bootstrapModal = new bootstrap.Modal(modal); // Usar Bootstrap Modal
+    bootstrapModal.show();
+  }
+
+
+});
