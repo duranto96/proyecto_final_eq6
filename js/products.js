@@ -23,10 +23,7 @@ function showProductsList(productsArray) {
   let htmlLista = "";
   for (let p of productsArray) {
     htmlLista += ` 
- <div class="list-group">
-  <a href="product-info.html" onclick="setProductID"(${
-    p.id
-  })" class="list-group-item list-group-item-action flex-column align-items-start">
+ <a href="product-info.html" onclick="setProductID(${p.id})" class="list-group-item list-group-item-action flex-column align-items-start">
 
    
     <div class="d-flex align-items-start justify-content-between">
