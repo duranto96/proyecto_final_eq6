@@ -1,0 +1,58 @@
+.center-title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.grid-cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+.cart-section {
+  grid-column: 1 / 2;
+}
+
+.shipping-form {
+  grid-column: 1 / 2;
+  grid-row: 2/3;
+}
+
+.payment-section {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 85%;
+  margin-top: 3em;
+}
+
+.receipt-section {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  border-radius: 8px;
+  padding: 15px;
+  max-width: 85%;
+}
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.custom-checkbox {
+  margin: 0;
+}
+
+.inputs-checkboxes {
+  margin: 1.5em;
+}
+
+.flex-father {
+  display: flex;
+}
